@@ -1,26 +1,26 @@
 package com.ytz.spoilyou.entity;
 
-//宠物类
-public class Pet {
+//宠物详情类
+public class PetDetail {
     private int id;
-    private String pno;
+    private int pno;
     private String name;
-    private int kind;
+    private int age;
 
-    public Pet() {
+    public PetDetail() {
     }
 
-    public Pet(String pno, String name, int kind) {
+    public PetDetail(int pno, String name, int age) {
         this.pno = pno;
         this.name = name;
-        this.kind = kind;
+        this.age = age;
     }
 
-    public Pet(int id, String pno, String name, int kind) {
+    public PetDetail(int id, int pno, String name, int age) {
         this.id = id;
         this.pno = pno;
         this.name = name;
-        this.kind = kind;
+        this.age = age;
     }
 
     public int getId() {
@@ -31,11 +31,11 @@ public class Pet {
         this.id = id;
     }
 
-    public String getPno() {
+    public int getPno() {
         return pno;
     }
 
-    public void setPno(String pno) {
+    public void setPno(int pno) {
         this.pno = pno;
     }
 
@@ -47,21 +47,21 @@ public class Pet {
         this.name = name;
     }
 
-    public int getKind() {
-        return kind;
+    public int getAge() {
+        return age;
     }
 
-    public void setKind(int kind) {
-        this.kind = kind;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     @Override
     public String toString() {
-        return "Pet{" +
+        return "PetDetail{" +
                 "id=" + id +
-                ", pno='" + pno + '\'' +
+                ", pno=" + pno +
                 ", name='" + name + '\'' +
-                ", kind=" + kind +
+                ", age=" + age +
                 '}';
     }
 }
