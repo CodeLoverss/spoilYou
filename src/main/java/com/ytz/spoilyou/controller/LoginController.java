@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //登录注册等等
 @Controller
 public class LoginController {
-
     @Autowired
     private LoginService loginService;
 
