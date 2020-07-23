@@ -284,8 +284,31 @@ function applyAdopt(pet_id) {
             pet_id:pet_id
         },
         complete : function(data) {
+            if (data.responseText=="nlogin"){
+                location.href="/login";
+            }
+
             alert(data.responseText);
+
+            $("#"+pet_id).val("…Í«Î÷–");
             $("#"+pet_id).fadeOut("500");
+        },
+        error:function(){
+            alert("fail");
+        }
+    });
+}
+function applyAdopt1(pet_id) {
+    alert("/////"+pet_id);
+    $.ajax({
+        type : "post",
+        url : "manager/applyAdopt",
+        data:{
+            pet_id:pet_id
+        },
+        complete : function(data) {
+            alert(data.responseText);
+            $("#"+pet_id).val("…Í«Î÷–");
         },
         error:function(){
             alert("fail");
@@ -332,3 +355,5 @@ function refuseAdopt(id,user_id,pet_id) {
         }
     });
 }
+
+

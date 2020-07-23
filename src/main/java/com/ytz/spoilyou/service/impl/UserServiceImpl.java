@@ -59,6 +59,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Adopt findAdoptByPetId(int id) {
+        return userMapper.findAdoptByPetId(id);
+    }
+
+    @Override
     public boolean handleRequest(Adopt adopt) {
         userMapper.handleRequest(adopt);
         if(adopt.getState().equals("领养")){

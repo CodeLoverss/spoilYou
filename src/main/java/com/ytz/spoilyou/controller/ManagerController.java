@@ -108,7 +108,7 @@ public class ManagerController {
         petDetail.setAge(Integer.parseInt(age));
         petDetail.setBirth(birth);
         petDetail.setSex(sex);
-        petDetail.setDescribe(describe);
+        petDetail.setBrief(describe);
 
         HandlePhoto handlePhoto=new HandlePhoto();
         try {
@@ -146,10 +146,13 @@ public class ManagerController {
             adopt.setPet_id(pet_id);
             adopt.setPetname(petDetail.getName());
             User user= (User) request.getSession().getAttribute("user");
+            if (user==null){
+                return "nlogin";
+            }
             adopt.setUser_id(user.getId());
             adopt.setUsername(user.getUsername());
-
             if(userService.addAdopt(adopt)) return "success";
+
         }
 
        return "fail";
