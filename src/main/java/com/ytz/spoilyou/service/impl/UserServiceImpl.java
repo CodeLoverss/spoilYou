@@ -81,4 +81,9 @@ public class UserServiceImpl implements UserService {
     public List<Adopt> findMyRequest(int id) {
         return userMapper.findMyRequest(id);
     }
+
+    @Override
+    public List<Adopt> findRepeatRequest(int user_id, int pet_id) {
+        return userMapper.findRepeatRequest(user_id,pet_id);
+    }
 }

@@ -6,11 +6,12 @@
     <title>Title</title>
 
     <link rel='stylesheet' th:href="@{/css/pet-styles.css}">
+    <link rel='stylesheet' th:href="@{/css/style.css}">
     <script src="js/manager.js"></script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/npm.js"></script>
 </head>
-<body class='lang-zh page-menu-beverages' ontouchstart='' style="overflow-x: hidden; overflow-y: auto;" onload="
+<body class='lang-zh page-menu-beverages' ontouchstart='' style="margin-right: -15px; margin-bottom: -15px;" onload="
 if($('#role_index').text=='管理员')changeContent('content1','index1');else changeContent('content7','index7')">
 <span id="role_index" style="display: none" th:text="${session.user.getRole()}"></span>
 <div style="width: 100%; margin: auto;">
@@ -26,9 +27,9 @@ if($('#role_index').text=='管理员')changeContent('content1','index1');else ch
 
                     <li th:if="${session.user.getRole().equals('管理员')}" th:id="index5" onclick="changeContent('content5',this.id);" class="list-group-item">添加种类</li>
                     <li th:if="${session.user.getRole().equals('管理员')}" th:id="index6" onclick="changeContent('content6',this.id);" class="list-group-item">用户申请</li>
-                    <li th:id="index7" onclick="changeContent('content7',this.id);" class="list-group-item">我要领养</li>
-                    <li th:id="index8" onclick="changeContent('content8',this.id);" class="list-group-item">我的申请</li>
-                    <li th:id="index9" onclick="changeContent('content9',this.id);" class="list-group-item">我的领养</li>
+                    <li style="cursor: pointer" th:id="index7" onclick="changeContent('content7',this.id);" class="list-group-item">我要领养</li>
+                    <li style="cursor: pointer" th:id="index8" onclick="changeContent('content8',this.id);" class="list-group-item">我的申请</li>
+                    <li style="cursor: pointer" th:id="index9" onclick="changeContent('content9',this.id);" class="list-group-item">我的领养</li>
                 </ul>
             </div>
 
@@ -50,9 +51,9 @@ if($('#role_index').text=='管理员')changeContent('content1','index1');else ch
                                 <td th:text="${pet.name}"></td>
                                 <td th:text="${pet.age}"></td>
                                 <td th:text="${pet.sex}"></td>
-                                <td style="cursor:pointer;" th:id="${pet.pno}" onclick="deletePet(this.id)"><span
+                                <td><span style="cursor:pointer;" th:id="${pet.pno}" onclick="deletePet(this.id)"
                                         class="label label-danger">删除</span></td>
-                                <td style="cursor:pointer;" th:id="${pet.pno}" onclick="PetInfo(this.id)"><span
+                                <td><span style="cursor:pointer;" th:id="${pet.pno}" onclick="PetInfo(this.id)"
                                         class="label label-success">详情</span></td>
                             </tr>
 
@@ -149,9 +150,9 @@ if($('#role_index').text=='管理员')changeContent('content1','index1');else ch
                                 <td th:text="${user.password}"></td>
                                 <td th:text="${user.role}"></td>
 
-                                <td style="cursor:pointer;"><span th:id="${user.id}"
+                                <td><span style="cursor:pointer;" th:id="${user.id}"
                                                                   class="label label-danger">删除</span></td>
-                                <td style="cursor:pointer;"><span th:id="${user.id}"
+                                <td><span style="cursor:pointer;" th:id="${user.id}"
                                                                   class="label label-success" data-toggle="modal"
                                                                   data-target="#myModal" onclick="getInfo(this.id);"
                                 >修改</span>
@@ -288,7 +289,7 @@ if($('#role_index').text=='管理员')changeContent('content1','index1');else ch
                                 <td th:text="${pet.name}"></td>
                                 <td th:text="${pet.age}"></td>
                                 <td th:text="${pet.sex}"></td>
-                                <td style="cursor:pointer;" th:id="${pet.pno}" onclick="applyAdopt(this.id)"><span
+                                <td><span style="cursor:pointer;" th:id="${pet.pno}" onclick="applyAdopt(this.id)"
                                         class="label label-success">申请领养</span></td>
 
                             </tr>

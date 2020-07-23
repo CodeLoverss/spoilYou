@@ -40,6 +40,9 @@ public interface UserMapper {
     @Select("select * from adopt where state='申请'")
     List<Adopt> findAllRequest();
 
+    @Select("select * from adopt where user_id=#{user_id} and pet_id=#{pet_id} and state='申请'")
+    List<Adopt> findRepeatRequest(int user_id,int pet_id);
+
     @Select("select * from adopt where state='申请' and user_id=#{id}")
     List<Adopt> findMyRequest(int id);
 

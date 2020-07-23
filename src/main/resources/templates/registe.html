@@ -19,6 +19,9 @@
         f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-MGKBKT5');</script>
 
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+
     <title>注册</title>
 
     <!-- Meta -->
@@ -44,9 +47,25 @@
 
 
 <div th:insert="'index.html':: copy"></div>
-
+<script>
+    function checkRegisteForm() {
+        var username=$('#username').val();
+        var password=$('#password').val();
+        if(username!=null&&password!=null){
+            if(username.length<3||password.length<3) {
+                alert('用户名和密码长度至少为3位');
+                return false;
+            }
+            return true;
+        }
+        else {
+            alert('用户名和密码长度至少为3位');
+            return false;
+        }
+    }
+</script>
 <section id='content'>
-    <form action="/registe" method="post">
+    <form action="/registe" method="post" onsubmit="return checkRegisteForm();">
         <section class="join-form submit-box">
             <div class="wrapper wrapper-mobile">
                 <div class="login-form">
@@ -61,7 +80,7 @@
                         <div class="password-group-field">
                             <div class="field floating">
                                 <div class="ok">
-                                    <input type="password" name="password" placeholder="密码" value=""
+                                    <input th:id="password" type="password" name="password" placeholder="密码" value=""
                                            autocomplete="new-password">
                                     <label>密码</label>
                                 </div>

@@ -1,55 +1,83 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <title>宠物详情页</title>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel='stylesheet' th:href="@{/css/pet-styles.css}">
-    <script src="js/manager.js"></script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
+
 <div th:insert="'index.html':: copy"></div>
 <table style="margin-left: 30%" class="detail-table">
     <form action="" method="post">
-    <tr style="text-align: center">
-        <td colspan="6">
-            <a id='menu-product-related-affogato' href='' class='thumbnail'>      <!--PetDetail-->
-                <div  class='preview circle' th:style="'background-image: url('+${currPet.picture}+')'"></div>
-                <strong>[[${currPet.name}]]</strong>
-                <!--<div class='preview circle' style='background-image: url("/images/cats/cat1.jpg")'></div>
-                <strong>阿馥奇朵™</strong>-->
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <th>年龄</th>
-        <th>生日</th>
-        <th>性别</th>
-        <th>描述</th>
-        <th>品种</th>
-        <th></th>
-    </tr>
-    <tr>
-        <td>[[${currPet.age}]]</td>
-        <td>[[${currPet.birth}]]</td>
-        <td>[[${currPet.sex}]]</td>
-        <td>[[${currPet.brief}]]</td>
-        <td>[[${currPet.kind}]]</td>
-        <td th:if="${currPet.state} eq '已领养'">
-            <input type="button" class="button primary trigger" value="已领养" style="background-color: grey"  onclick="$('#id').attr('disabled','true');" id="disabled">
-        </td>
-        <td th:if="${currPet.state} ne '已领养'">
-            <input type="button" class="button primary trigger" value="申请领养" th:id="${currPet.pno}" onclick="applyAdopt(this.id) " >
-        </td>
-    </tr>
+        <tr style="text-align: center">
+            <td colspan="6">
+                <a id='menu-product-related-affogato' href='' class='thumbnail'>      <!--PetDetail-->
+                    <div  class='preview circle' th:style="'background-image: url('+${currPet.picture}+')'"></div>
+                    <strong>[[${currPet.name}]]</strong>
+                    <!--<div class='preview circle' style='background-image: url("/images/cats/cat1.jpg")'></div>
+                    <strong>阿馥奇朵™</strong>-->
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th>年龄</th>
+            <th>生日</th>
+            <th>性别</th>
+            <th>描述</th>
+            <th>品种</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>[[${currPet.age}]]</td>
+            <td>[[${currPet.birth}]]</td>
+            <td>[[${currPet.sex}]]</td>
+            <td>[[${currPet.brief}]]</td>
+            <td>[[${currPet.kind}]]</td>
+
+            <td th:if="${currPet.state=='已领养'}">
+                <input type="button" class="button primary trigger" value="已领养" style="background-color: grey"  onclick="$('#disabled').attr('disabled','true');" id="disabled">
+            </td>
+            <td th:if="${currPet.state != '已领养'}">
+                <input type="button" class="button primary trigger" value="申请领养" th:id="${currPet.pno}" onclick="applyAdopt1(this.id);" >
+
+            </td>
+        </tr>
     </form>
 </table>
 
 </body>
 <script type="text/javascript">
+    function applyAdopt1(pet_id) {
+        $.ajax({
+            type : "post",
+            url : "/manager/applyAdopt",
+            data:{
+                pet_id:pet_id
+            },
+            complete : function(data) {
 
+                if(data.responseText=="nlogin"){
+                    alert("请先登录");
+                    location.href="/login";
+                }
+                else if(data.responseText=="repeatRequest") {
+                    alert("您已经申请过啦，请耐心等候审核");
+                }
+                else {
+                    alert("申请已提交");
+                    $("#" + pet_id).val("申请中");
+                }
+            },
+            error:function(){
+                alert("fail");
+            }
+        });
+    }
 </script>
 </html>
 

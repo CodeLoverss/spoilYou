@@ -149,6 +149,10 @@ public class ManagerController {
             if (user==null){
                 return "nlogin";
             }
+            List<Adopt> list=userService.findRepeatRequest(user.getId(),pet_id);
+            if(list.size()!=0){
+                return "repeatRequest";
+            }
             adopt.setUser_id(user.getId());
             adopt.setUsername(user.getUsername());
             if(userService.addAdopt(adopt)) return "success";

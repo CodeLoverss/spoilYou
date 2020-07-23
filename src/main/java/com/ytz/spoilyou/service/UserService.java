@@ -34,4 +34,6 @@ public interface UserService {
 
     List<Adopt> findMyAdopt(int id);
     List<Adopt> findMyRequest(int id);
+
+    List<Adopt> findRepeatRequest(int user_id,int pet_id);
 }
