@@ -46,6 +46,9 @@ public interface UserMapper {
     @Select("select * from adopt where state='领养' and user_id=#{id}")
     List<Adopt> findMyAdopt(int id);
 
+    @Select("select * from adopt where pet_id=#{id}")
+    Adopt findAdoptByPetId(int id);
+
     @Update("update adopt set state=#{state} where id=#{id}")
     boolean handleRequest(Adopt adopt);
     @Update("update petdetail set state='已领养' where pno=#{pet_id}")

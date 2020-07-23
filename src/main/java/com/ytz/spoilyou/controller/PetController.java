@@ -1,11 +1,13 @@
 package com.ytz.spoilyou.controller;
 
 
+import com.ytz.spoilyou.entity.Adopt;
 import com.ytz.spoilyou.entity.Kind;
 import com.ytz.spoilyou.entity.PetDetail;
 import com.ytz.spoilyou.mapper.PetMapper;
 import com.ytz.spoilyou.service.KindService;
 import com.ytz.spoilyou.service.PetService;
+import com.ytz.spoilyou.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,9 @@ public class PetController {
 
     @Autowired
     private KindService kindService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/findByKind")
     public String findByKind(@RequestParam("id") String id, Model model){
@@ -73,5 +78,18 @@ public class PetController {
         PetDetail petDetail=petService.findPetDetailById(pno);
         return petDetail;
     }
+
+    @RequestMapping("/findPetDetail")
+    public String getPetDetail(@RequestParam("id") int id,
+                                  Model model){
+        PetDetail petDetail=petService.findPetDetailById(id);
+        Adopt adopt=userService.findAdoptByPetId(petDetail.getPno());
+        if (petDetail!=null){
+            model.addAttribute("adopt",adopt);
+            model.addAttribute("currPet",petDetail);
+        }
+        return "petsDetail";
+    }
+
 
 }

@@ -28,6 +28,8 @@ public interface UserService {
 
     List<Adopt> findAllRequest();
 
+    Adopt findAdoptByPetId(int id);
+
     boolean handleRequest(Adopt adopt);
 
     List<Adopt> findMyAdopt(int id);

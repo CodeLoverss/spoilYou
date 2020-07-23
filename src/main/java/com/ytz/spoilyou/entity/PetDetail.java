@@ -11,6 +11,15 @@ public class PetDetail {
     private String brief;
     private String picture;
     private int kind;
+    private String state;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public int getKind() {
         return kind;
@@ -36,12 +45,12 @@ public class PetDetail {
         this.birth = birth;
     }
 
-    public String getDescribe() {
+    public String getBrief() {
         return brief;
     }
 
-    public void setDescribe(String describe) {
-        this.brief = describe;
+    public void setBrief(String brief) {
+        this.brief = brief;
     }
 
     public String getPicture() {

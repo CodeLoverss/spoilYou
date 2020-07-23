@@ -6,9 +6,8 @@
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel='stylesheet' th:href="@{/css/pet-styles.css}">
-    <style>
-
-    </style>
+    <script src="js/manager.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
 <div th:insert="'index.html':: copy"></div>
@@ -36,17 +35,22 @@
         <td>[[${currPet.age}]]</td>
         <td>[[${currPet.birth}]]</td>
         <td>[[${currPet.sex}]]</td>
-        <td>[[${currPet.describe}]]</td>
+        <td>[[${currPet.brief}]]</td>
         <td>[[${currPet.kind}]]</td>
-        <td>
-            <input type="submit" class="button primary trigger" value="领养">
-            <input type="hidden" th:value="${currPet.pno}">
+        <td th:if="${currPet.state} eq '已领养'">
+            <input type="button" class="button primary trigger" value="已领养" style="background-color: grey"  onclick="$('#id').attr('disabled','true');" id="disabled">
+        </td>
+        <td th:if="${currPet.state} ne '已领养'">
+            <input type="button" class="button primary trigger" value="申请领养" th:id="${currPet.pno}" onclick="applyAdopt(this.id) " >
         </td>
     </tr>
     </form>
 </table>
 
 </body>
+<script type="text/javascript">
+
+</script>
 </html>
 
 <!--测试数据
