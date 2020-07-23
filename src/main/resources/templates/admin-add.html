@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>添加宠物</title>
+
+    <link rel='stylesheet' th:href="@{/css/pet-styles.css}">
+
+</head>
+<body>
+
+<div th:insert="'admin-index.html':: copy"></div>
+<div class="admin-div" style="margin-left: 40%">
+
+    <form action="" method="post">
+        <label>
+            <input type="text" name="name" placeholder="请输入姓名">
+            <br/>
+            <input type="text" name="age" placeholder="请输入年龄">
+            <br/>
+            <input type="text" name="birth" placeholder="请输入生日">
+            <br/>
+            <input type="text" name="sex" placeholder="请输入性别">
+            <br/>
+            <input type="text" name="picture" placeholder="请输入图片">
+            <br/>
+            <input type="text" name="describe" placeholder="请输入描述">
+            <br/>
+            <input type="text" name="kind" placeholder="请输入种类">
+            <br/>
+        </label>
+        <br/>
+        <input type="submit" value="添加" class="button primary trigger">
+        <input type="reset" value="清空" class="button primary trigger">
+    </form>
+</div>
+</body>
+</html>

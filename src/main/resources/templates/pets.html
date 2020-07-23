@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <script>window.dataLayer = [];</script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = '/js/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })
+        (window, document, 'script', 'dataLayer', 'GTM-MGKBKT5');
+    </script>
+
+
+    <title>Pets</title>
+
+    <!-- Meta -->
+
+    <meta charset='utf-8'/>
+    <meta http-equiv='Content-Language' content='zh'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    <meta name='keywords' content=''/>
+    <meta name='description' content='猫猫'>
+    <meta name='baidu-site-verification' content='u7Vir8pZFL'/>
+    <!--<link rel='canonical' href='/menu/beverages/'>-->
+
+    <!-- CSS -->
+    <link rel='stylesheet' th:href="@{/css/pet-styles.css}">
+</head>
+
+<body class='lang-zh page-menu-beverages' ontouchstart=''>
+
+
+<script>
+    var isChrome = ((navigator.userAgent.toLowerCase().indexOf('chrome') > -1) && (navigator.vendor.toLowerCase().indexOf('google') > -1) || navigator.userAgent.match('CriOS'));
+    if (isChrome) document.body.classList.add('chrome');
+</script>
+
+<!--<div th:insert="'index.html':: copy"></div>-->
+<div id='app-view-wrapper'>
+    <!-- Navigation panel -->
+
+
+    <!-- Page content -->
+    <section id='content'>
+
+        <div class='wrapper fluid margin page-menu-list'>
+
+<!--            <h3 class='caption' th:if="${para}" th:text="${para.name}"></h3>-->
+            <ul class='grid padded-3 product'>
+                <!--查询该类别下的所有宠物详情-->
+                <li th:each="pet:${currPetsDetail}">
+                    <!--这里的参数是宠物表的id，detail的pno-->
+                    <a id='menu-product-related-affogato' th:href='@{/pet/findPetDetail(id=${pet.pno})}'
+                       class='thumbnail' target="main">
+                        <div class='preview circle' th:style="'background-image: url(/'+${pet.picture}+')'"></div>
+                        <strong th:text="${pet.name}"></strong>
+                    </a>
+                </li>
+
+            </ul>
+
+            <hr/>
+        </div>
+
+
+        <div class='overlay' id='menu-search-overlay'>
+            <header class='header'>
+                <button class='icon close'>Close</button>
+            </header>
+
+            <div class='body'>
+                <form action="/pet/searchPetByName" method="post">
+                    <div class='field search'>
+                        <img th:src="@{/icons/icon-search.svg}" class='icon'/>
+                        <input type='text' id='menu-search-input' name="petname" placeholder='search by name'/>
+                    </div>
+                </form>
+                <div id='menu-search-empty'></div>
+                <ul class='grid columns-4 padded-2' id='menu-search-results'></ul>
+            </div>
+        </div>
+        <div class='frap'>
+            <button id="featured-campaign-search" class='button primary trigger' rel='menu-search-overlay'
+                    type="submit">搜索
+            </button>
+        </div>
+
+
+        <div id='app-notification'></div>
+    </section>
+
+    <div id='app-loading'></div>
+    <div id='app-auth'></div>
+
+</div>
+
+
+<script type='text/javascript' th:src="@{/js/jweixin-1.2.0.js}"></script>
+<script type='text/javascript' th:src="@{/js/base-bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/common.bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/vendor.bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/pages.bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/lunr.min.js}"></script>
+<script type='text/javascript' th:src="@{/js/menu-search-zh.js}"></script>
+
+<script> trackSearch('#menu-search-input'); </script>
+
+
+</body>
+</html>

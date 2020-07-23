@@ -1,10 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <script>window.dataLayer = [];</script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = '/js/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })
+        (window, document, 'script', 'dataLayer', 'GTM-MGKBKT5');
+    </script>
+
+
+    <title>SpoilYou</title>
+
+    <!-- Meta -->
+    <meta charset='utf-8'/>
+    <meta http-equiv='Content-Language' content='zh'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    <meta name='keywords' content=''/>
+    <meta name='description' content='SpoilYou'>
+    <meta name='baidu-site-verification' content='u7Vir8pZFL'/>
+    <!--使用 rel=canonical 为类似网页或重复网页指定权威网页-->
+    <!--<link rel='canonical' href='/templates/'>-->
+
+
+    <!-- CSS -->
+    <link rel='stylesheet' th:href="@{/css/styles.css}">
 </head>
-<body>
-我宠你
+
+<body class='lang-zh page-menu' ontouchstart=''>
+
+
+<script>
+    var isChrome = ((navigator.userAgent.toLowerCase().indexOf('chrome') > -1) && (navigator.vendor.toLowerCase().indexOf('google') > -1) || navigator.userAgent.match('CriOS'));
+    if (isChrome) document.body.classList.add('chrome');
+</script>
+
+<!--开始-->
+<div id='app-view-wrapper'>
+    <!-- Navigation panel -->
+
+
+    <nav id='nav' th:fragment="copy">
+        <div id='placeholder-element'></div>
+        <div class='container'>
+            <header class='header'>
+                <a class='logo' href='/'>
+                    <img th:src="@{/images/logo.jpg}" alt=''/>
+                </a>
+                <div class='primary'>
+                    <ul>
+
+                        <li th:if="${session.user!=null}">
+                            <a href="/manager">
+                                我的帐户
+                            </a>
+
+                        </li>
+                        <li  th:if="${session.user==null}">
+                            <a href="/login">
+                                登录
+                            </a>
+
+
+                        </li><li  th:if="${session.user==null}">
+
+                        <a href="/toRegiste">
+                            注册
+                        </a>
+
+                    </li>
+                    </ul>
+                    <div>
+                       <img style="margin-top:10px;border-radius: 7px" th:src="@{/images/bg.png}">
+                    </div>
+                </div>
+
+            </header>
+
+            <div class='body'>
+                <nav class='container middle secondary'>
+
+                    <div class='display-1'>种类</div>
+                    <div class='tabs-wrapper'>
+                        <ul class='subcategories'>
+
+                            <!--登录后，初始化界面，通过findAllKinds查找所有种类，显示种类currKinds-->
+                            <li th:each="kind:${currKinds}">
+                                <a id='side_menu_beverages' th:href="@{/pet/findByKind(id=${kind.id})}">
+                                    [[${kind.name}]]
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </nav>
+
+            </div>
+        </div>
+
+    </nav>
+    <style>
+        @media (min-width: 1025px) {
+            #terms-notes {
+                margin-left: 30%;
+                width: 69%;
+            }
+
+            #placeholder-element {
+                display: none;
+            }
+        }
+    </style>
+
+    <script>
+        var pathname = window.location.pathname;
+        if (pathname === '/' || pathname === '') {
+            var termsNotes = termsNotesHeight = document.getElementById('terms-notes')
+            termsNotes.style.display = 'block';
+            document.getElementById('terms-notes-zh').style.display = 'block';
+            var placeholderElement = document.getElementById('placeholder-element');
+            placeholderElement.style.height = termsNotes.offsetHeight + 'px';
+        }
+        if (pathname === '/en' || pathname === '/en/') {
+            var termsNotes = termsNotesHeight = document.getElementById('terms-notes')
+            termsNotes.style.display = 'block';
+            document.getElementById('terms-notes-en').style.display = 'block';
+            var placeholderElement = document.getElementById('placeholder-element');
+            placeholderElement.style.height = termsNotes.offsetHeight + 'px';
+        }
+    </script>
+
+
+    <!-- Page content -->
+
+    <!--主页默认显示cat-->
+
+    <div class="layui-tab-content clildFrame" th:replace="pets::html">
+        <!--          <iframe th:replace="pets::html" name="main"></iframe>-->
+    </div>
+
+    <!--<div class="layui-tab-content clildFrame">
+        <iframe th:replace="cats::html" name="main"></iframe>
+    </div>-->
+
+
+</div>
+
+
+<script type='text/javascript' th:src="@{/js/jweixin-1.2.0.js}"></script>
+
+<script type='text/javascript' th:src="@{/js/base-bundle.js}"></script>
+
+<script type='text/javascript' th:src="@{/js/common.bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/vendor.bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/pages.bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/lunr.min.js}"></script>
+<script type='text/javascript' th:src="@{/js/menu-search-zh.js}"></script>
+
+<script> trackSearch('#menu-search-input'); </script>
+
 </body>
 </html>

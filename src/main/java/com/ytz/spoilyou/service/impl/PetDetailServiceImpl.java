@@ -9,18 +9,5 @@ import org.springframework.stereotype.Service;
 public class PetDetailServiceImpl implements PetDetailService {
     private PetDetailMapper petDetailMapper;
 
-    @Override
-    public boolean addPetDetail(PetDetail petDetail) {
-        return petDetailMapper.addPetDetail(petDetail);
-    }
 
-    @Override
-    public boolean updatePet(PetDetail petDetail) {
-        return petDetailMapper.updatePet(petDetail);
-    }
-
-    @Override
-    public PetDetail findPetDetailById(int id) {
-        return petDetailMapper.findPetDetailById(id);
-    }
 }

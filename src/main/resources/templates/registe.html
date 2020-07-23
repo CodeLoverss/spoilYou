@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <script>window.dataLayer = [];
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            '/js/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MGKBKT5');</script>
+
+    <title>注册</title>
+
+    <!-- Meta -->
+
+    <meta charset='utf-8'/>
+    <meta http-equiv='Content-Language' content='zh'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    <meta name='keywords' content=''/>
+    <meta name='description' content='登录'>
+    <meta name='baidu-site-verification' content='u7Vir8pZFL'/>
+
+
+    <!-- CSS -->
+    <link rel='stylesheet' th:href="@{/css/styles.css}">
+</head>
+
+<body class='lang-zh page-account' ontouchstart=''>
+
+<script>
+    var isChrome = ((navigator.userAgent.toLowerCase().indexOf('chrome') > -1) && (navigator.vendor.toLowerCase().indexOf('google') > -1) || navigator.userAgent.match('CriOS'));
+    if (isChrome) document.body.classList.add('chrome');
+</script>
+
+
+<div th:insert="'index.html':: copy"></div>
+
+<section id='content'>
+    <form action="/registe" method="post">
+        <section class="join-form submit-box">
+            <div class="wrapper wrapper-mobile">
+                <div class="login-form">
+                    <div class="form-field">
+                        <div class="field floating">
+                            <div class="ok">
+                                <input type="text" id="username" name="username" placeholder="用户名或者电子邮箱" value=""
+                                       autocomplete="new-password">
+                                <label>用户名或者电子邮箱</label>
+                            </div>
+                        </div>
+                        <div class="password-group-field">
+                            <div class="field floating">
+                                <div class="ok">
+                                    <input type="password" name="password" placeholder="密码" value=""
+                                           autocomplete="new-password">
+                                    <label>密码</label>
+                                </div>
+                            </div>
+                            <div class="toggle-password hide"></div>
+                        </div>
+                        <div style="color:red" th:text="${registe_error}">
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div style="text-align: center" class="actions">
+                <button class="button large">
+                    <span>注册</span>
+                </button>
+            </div>
+        </section>
+    </form>
+</section>
+
+
+<script type='text/javascript' th:src="@{/js/jweixin-1.2.0.js}"></script>
+
+<script type='text/javascript' th:src="@{/js/base-bundle.js}"></script>
+
+<script type='text/javascript' th:src="@{/js/common.bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/vendor.bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/pages.bundle.js}"></script>
+<script type='text/javascript' th:src="@{/js/lunr.min.js}"></script>
+<script type='text/javascript' th:src="@{/js/menu-search-zh.js}"></script>
+<script type="text/javascript" th:src="@{/js/app.bundle.js}"></script>
+
+
+</body>
+</html>

@@ -6,6 +6,51 @@ public class PetDetail {
     private int pno;
     private String name;
     private int age;
+    private String sex;
+    private String birth;
+    private String brief;
+    private String picture;
+    private int kind;
+
+    public int getKind() {
+        return kind;
+    }
+
+    public void setKind(int kind) {
+        this.kind = kind;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public String getDescribe() {
+        return brief;
+    }
+
+    public void setDescribe(String describe) {
+        this.brief = describe;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 
     public PetDetail() {
     }

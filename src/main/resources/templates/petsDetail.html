@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel='stylesheet' th:href="@{/css/pet-styles.css}">
+    <style>
+
+    </style>
+</head>
+<body>
+<div th:insert="'index.html':: copy"></div>
+<table style="margin-left: 30%" class="detail-table">
+    <form action="" method="post">
+    <tr style="text-align: center">
+        <td colspan="6">
+            <a id='menu-product-related-affogato' href='' class='thumbnail'>      <!--PetDetail-->
+                <div  class='preview circle' th:style="'background-image: url('+${currPet.picture}+')'"></div>
+                <strong>[[${currPet.name}]]</strong>
+                <!--<div class='preview circle' style='background-image: url("/images/cats/cat1.jpg")'></div>
+                <strong>阿馥奇朵™</strong>-->
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th>年龄</th>
+        <th>生日</th>
+        <th>性别</th>
+        <th>描述</th>
+        <th>品种</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>[[${currPet.age}]]</td>
+        <td>[[${currPet.birth}]]</td>
+        <td>[[${currPet.sex}]]</td>
+        <td>[[${currPet.describe}]]</td>
+        <td>[[${currPet.kind}]]</td>
+        <td>
+            <input type="submit" class="button primary trigger" value="领养">
+            <input type="hidden" th:value="${currPet.pno}">
+        </td>
+    </tr>
+    </form>
+</table>
+
+</body>
+</html>
+
+<!--测试数据
+        <td>3</td>
+        <td>2017-6</td>
+        <td>男</td>
+        <td>蓝猫蓝猫蓝猫蓝猫蓝猫蓝猫蓝猫蓝猫蓝猫蓝猫</td>
+        <td>猫</td>-->
+
