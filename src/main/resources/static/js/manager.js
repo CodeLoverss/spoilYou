@@ -148,7 +148,7 @@ function alterPetBtn(){
     var age=$("#age").val();
     var birth=$("#birth").val();
     var sex=$("#sex").val();
-    var describe=$("#describe").val();
+    var brief=$("#describe").val();
     $.ajax({
         type : "post",
         url : "manager/alterPetInfo",
@@ -158,7 +158,7 @@ function alterPetBtn(){
             age:age,
             birth:birth,
             sex:sex,
-            describe:describe
+            brief:brief
         },
         complete : function(data) {
             alert("success");
@@ -224,7 +224,7 @@ function PetInfo(pno) {
                 $("#age").val(json1["age"]);
                 $("#birth").val(json1["birth"]);
                 $("#sex").val(json1["sex"]);
-                $("#describe").val(json1["describe"]);
+                $("#describe").val(json1["brief"]);
 
             }
         },
